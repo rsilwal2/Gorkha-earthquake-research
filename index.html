@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Co-Seismic Deformation of the 2015 Gorkha Earthquake | Radar Remote Sensing</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">Gorkha Earthquake Research</div>
+            <ul class="nav-menu">
+                <li><a href="#home"><b>Home</b></a></li>
+                <li><a href="#abstract"><b>Introduction</b></a></li>
+                <li><a href="#methodology"><b>Methodology</b></a></li>
+                <li><a href="#results"><b>Results</b></a></li>
+                <li><a href="#conclusions"><b>Conclusions</b></a></li>
+                <li><a href="#Landslide"><b>Landslide</b></a></li>
+            </ul>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/rajeshsilwal2/" target="_blank" rel="noopener noreferrer" class="social-link linkedin-link" aria-label="LinkedIn Profile">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+                <a href="https://orcid.org/0009-0006-6568-3596" target="_blank" rel="noopener noreferrer" class="social-link orcid-link" aria-label="ORCID Profile">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm-2.033 17.638c-1.482 0-2.679-.652-3.383-1.547l1.225-1.858c.403.547.932.82 1.547.82.642 0 1.057-.338 1.057-.88 0-.44-.3-.74-1.057-1.14l-1.44-.66c-1.32-.6-1.92-1.5-1.92-2.78 0-1.56 1.14-2.74 2.94-2.74 1.2 0 2.1.42 2.76 1.2l-1.2 1.8c-.36-.42-.84-.6-1.44-.6-.54 0-.9.3-.9.72 0 .48.36.78 1.2 1.2l1.44.66c1.56.72 2.28 1.56 2.28 2.94 0 1.8-1.38 2.94-3.18 2.94zm8.52.18h-2.22V8.782h2.22c2.7 0 4.32 1.56 4.32 4.5 0 2.88-1.62 4.536-4.32 4.536zm.18-7.38c-1.44 0-2.28.84-2.28 2.4v.78h2.28c1.44 0 2.22-.72 2.22-1.92 0-1.14-.78-1.26-2.22-1.26z"/>
+                    </svg>
+                </a>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <!-- NOTE: Add your interferogram image as "images/interferogram.jpg" for the hero background -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Studying Co-Seismic Deformation of the 2015 Gorkha Earthquake Using Radar Remote Sensing</h1>
+                <p class="hero-subtitle">Mapping Regional Surface Displacement Patterns Using ALOS-2 ScanSAR InSAR Data</p>
+                <p class="hero-author"><b>Rajesh Silwal</b></p>
+                <a href="#abstract" class="btn btn-primary">Explore Research</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section id="abstract" class="section section-pattern">
+        <div class="container">
+            <h2 class="section-title">Introduction</h2>
+            <div class="content-card">
+                <p class="lead-text" style="font-size: 16px;">
+                    The 2015 Gorkha Earthquake (Mw 7.8) and its largest aftershock (Mw 7.3) generated extensive surface deformation along a ~200 km stretch of the Main Himalayan Thrust in central Nepal. In this project, I produced a regional-scale coseismic displacement map using ALOS-2 ScanSAR data processed with interferometric synthetic aperture radar (InSAR). I mosaicked five descending subswaths to create a ~350 km-wide scene that fully captures the deformation footprints of both the mainshock and the Kodari aftershock.
+I processed the data using both ISCE2 and GMTSAR workflows, taking advantage of L-band’s longer wavelength to preserve interferometric coherence over the heavily vegetated and rugged Himalayan topography. To mitigate ionospheric disturbances typical of wide-swath L-band data, I tested and compared split-spectrum and polynomial trend-fitting methods, ultimately selecting the approach that yielded the cleanest and most accurate displacement field.
+In addition to deformation mapping, I analyzed the spatial relationship between coseismic ground displacement and thousands of earthquake-triggered landslides.
+                </p>
+                <p class="highlight-text">
+                    These results play a key role in enhancing the understanding of surface deformation caused by earthquake rupture along the Main Himalayan Thrust, improving regional seismic hazard assessment, and clarifying the link between strong coseismic deformation and landslide triggering.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology Section -->
+    <section id="methodology" class="section section-alt section-pattern">
+        <div class="container">
+            <h2 class="section-title">Methodology</h2>
+            
+            <div class="method-card landscape-card">
+                <div class="method-icon">🛰️</div>
+                <h3>L-Band Radar</h3>
+                <p>L-band radar data used for better coherence over densely vegetated Himalayan terrain. The longer wavelength of L-band (approximately 23 cm) penetrates vegetation more effectively than shorter wavelengths, maintaining coherence over forested and vegetated areas, making it ideal for InSAR applications in the challenging Himalayan environment.</p>
+            </div>
+
+            <!-- Methodology Flowchart -->
+            <div class="methodology-flowchart">
+                <img src="images/flow_method.jpg" alt="Methodology Flowchart" class="flowchart-image">
+                <div class="flowchart-caption">Methodology workflow for processing ALOS-2 ScanSAR data</div>
+            </div>
+            
+            <div class="methodology-grid">
+                <div class="method-card">
+                    <div class="method-icon">📡</div>
+                    <h3>Data Acquisition</h3>
+                    <p style="text-align: left;">
+                        <strong>ALOS-2 ScanSAR Image Pair</strong><br><br>
+                        <strong>Pre-Event Image (April 5, 2015, Descending):</strong><br>
+                        IMG-HH-ALOS2046743050-150405-WBDR1.1__D<br><br>
+                        <strong>Post-Event Image (May 17, 2015, Descending):</strong><br>
+                        IMG-HH-ALOS2052953050-150517-WBDR1.1__D
+                    </p>
+                </div>
+                <div class="method-card mosaicking-card">
+                    <div class="method-icon">🗺️</div>
+                    <h3>Mosaicking</h3>
+                    <p>Five subswaths (~70 km each) mosaicked into a 350km wide scene to capture the full ~200km deformation footprint</p>
+                    <div class="subswath-gallery">
+                        <div class="subswath-item" data-image="images/F1.jpg" data-label="Subswath F1">
+                            <img src="images/F1.jpg" alt="Subswath F1">
+                            <span>F1</span>
+                        </div>
+                        <div class="subswath-item" data-image="images/F2.jpg" data-label="Subswath F2">
+                            <img src="images/F2.jpg" alt="Subswath F2">
+                            <span>F2</span>
+                        </div>
+                        <div class="subswath-item" data-image="images/F3.jpg" data-label="Subswath F3">
+                            <img src="images/F3.jpg" alt="Subswath F3">
+                            <span>F3</span>
+                        </div>
+                        <div class="subswath-item" data-image="images/F4.jpg" data-label="Subswath F4">
+                            <img src="images/F4.jpg" alt="Subswath F4">
+                            <span>F4</span>
+                        </div>
+                        <div class="subswath-item" data-image="images/F5.jpg" data-label="Subswath F5">
+                            <img src="images/F5.jpg" alt="Subswath F5">
+                            <span>F5</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="method-card landscape-card interferogram-card">
+                    <div class="method-icon">📈</div>
+                    <h3>Interferogram Generation</h3>
+                    <div class="interferogram-gallery">
+                        <div class="interferogram-item" data-image="images/int_2.png" data-label="Interferogram prior to geocoding">
+                            <img src="images/int_2.png" alt="Interferogram before geocoding" />
+                            <span>Before geocoding</span>
+                        </div>
+                        <div class="interferogram-item" data-image="images/int_3.png" data-label="Interferogram after geocoding">
+                            <img src="images/int_3.png" alt="Interferogram after geocoding" />
+                            <span>After geocoding</span>
+                        </div>
+                        <div class="interferogram-item" data-image="images/int_4.png" data-label="Unwrapped phase map">
+                            <img src="images/int_4.png" alt="Unwrapped phase map" />
+                            <span>Unwrapped phase map</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="method-card landscape-card ionospheric-card">
+                    <div class="method-icon">⚙️</div>
+                    <h3>Ionospheric Correction</h3>
+                    <div class="ionospheric-techniques">
+                        <div class="ionospheric-technique">
+                            <h4>Trend Fitting Technique</h4>
+                            <p>Removed long-wavelength phase ramps via polynomial trend fitting.<br><strong>Tool used:</strong> <b>GRDTREND from GMT</b><br><code>Code:gmt grdtrend unwrap_ll.grd -N3 -Dunwrap_deramped_ll.grd</code></p>
+                            <div class="trend-gallery">
+                                <div class="trend-thumb" data-image="images/grd_3.png" data-label="Trend fitting result (N = 3)" role="button" tabindex="0">
+                                    <img src="images/grd_3.png" alt="Trend fitting result N equals 3" />
+                                    <span>N = 3</span>
+                                </div>
+                                <div class="trend-thumb" data-image="images/grd_5.png" data-label="Trend fitting result (N = 5)" role="button" tabindex="0">
+                                    <img src="images/grd_5.png" alt="Trend fitting result N equals 5" />
+                                    <span>N = 5</span>
+                                </div>
+                                <div class="trend-thumb" data-image="images/grd_6.png" data-label="Trend fitting result (N = 6)" role="button" tabindex="0">
+                                    <img src="images/grd_6.png" alt="Trend fitting result N equals 6" />
+                                    <span>N = 6</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ionospheric-figure" data-image="images/iono_no.png" data-label="Interferogram with no ionospheric correction" role="button" tabindex="0">
+                            <img src="images/iono_no.png" alt="Interferogram with no ionospheric correction" />
+                            <span class="ionospheric-caption">Interferogram with no ionospheric correction</span>
+                        </div>
+                        <div class="ionospheric-technique">
+                            <h4>Split Spectrum Technique</h4>
+                            <p>Separated the radar signal into two frequency bands and used their phase difference to estimate and subtract the ionospheric distortion.</p>
+                            <div class="split-spectrum-figure" data-image="images/int_3.png" data-label="Ionospheric phase removed with split spectrum" role="button" tabindex="0">
+                                <img src="images/int_3.png" alt="Ionospheric phase removed with split spectrum" />
+                                <span class="ionospheric-caption">Ionospheric phase removed with split spectrum</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section (Interactive Map) -->
+    <section id="results" class="section section-pattern">
+        <div class="container">
+            <h2 class="section-title">Results</h2>
+            <div class="map-card">
+                <div style="margin-bottom:12px;text-align:center;display:flex;justify-content:center;gap:20px;align-items:center;flex-wrap:wrap;">
+                    <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+                        <label style="font-weight:600;">
+                            <input id="toggleLos" type="checkbox" /> Display LOS Deformation
+                        </label>
+                        <label style="font-weight:600;">
+                            <input id="toggleInt" type="checkbox" /> Display Interferogram
+                        </label>
+                        <label style="font-weight:600;">
+                            <input id="toggleKsn" type="checkbox" /> Display KSN
+                        </label>
+                    </div>
+                    <select id="mapType" style="padding:6px 10px;font-size:13px;border:1px solid #ccc;border-radius:4px;">
+                        <option value="osm">OpenStreetMap</option>
+                        <option value="satellite">Satellite</option>
+                    </select>
+                </div>
+                <div id="resultsMap" class="results-map" role="region" aria-label="Interactive Map"
+                    data-los-layer="images/los.kmz">
+                </div>
+                <div style="text-align:center;margin-top:12px;">
+                    <div class="interferogram-item" data-image="images/cross.png" data-label="Geological cross-section of Nepal Himalaya (not in scale)" role="button" tabindex="0" style="display:inline-block;cursor:pointer;">
+                        <img src="images/cross.png" alt="Geological cross-section of Nepal Himalaya (not in scale)" style="max-width:100%;height:auto;border:1px solid #e6e6e6;" />
+                    </div>
+                </div>
+                <div class="content-card" style="text-align:center;margin-top:12px;display:flex;flex-wrap:wrap;gap:16px;justify-content:center;align-items:flex-start;">
+                    <div class="interferogram-item" data-image="images/finalmap1.jpg" data-label="Final Los displacement map" role="button" tabindex="0" style="flex:1 1 45%;max-width:560px;min-width:300px;cursor:pointer;box-sizing:border-box;">
+                        <img src="images/finalmap1.jpg" alt="Final Los displacement map" style="width:100%;height:auto;border:1px solid #e6e6e6;display:block;" />
+                        <div style="margin-top:8px;font-weight:600;">Final Los displacement map</div>
+                    </div>
+                    <div class="interferogram-item" data-image="images/dpm.jpg" data-label="Coherence based damage proxy map" role="button" tabindex="0" style="flex:1 1 45%;max-width:560px;min-width:300px;cursor:pointer;box-sizing:border-box;">
+                        <img src="images/dpm.jpg" alt="Coherence based damage proxy map" style="width:100%;height:auto;border:1px solid #e6e6e6;display:block;" />
+                        <div style="margin-top:8px;font-weight:600;">Coherence based damage proxy map</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conclusions Section -->
+    <section id="conclusions" class="section section-alt section-pattern">
+        <div class="container">
+            <h2 class="section-title">Conclusions</h2>
+            <div class="conclusions-content">
+                <div class="content-card">
+                    <h4 style="margin-bottom: 10px; font-weight: 600; color: var(--primary-color);">L-Band Radar in Vegetated Terrain:</h4>
+                    <ul style="margin-left: 20px; line-height: 1.8;">
+                        <li>L-band radar is essential for accurate deformation mapping in vegetated regions like Nepal.</li>
+                        <li>Its penetration capability enables reliable measurements despite dense vegetation cover.</li>
+                        <li>L-band coherence preservation reduces errors and improves deformation accuracy.</li>
+                    </ul>
+                    
+                    <h4 style="margin-top: 18px; margin-bottom: 10px; font-weight: 600; color: var(--primary-color);">ALOS-2 ScanSAR Coverage for Regional Mapping:</h4>
+                    <ul style="margin-left: 20px; line-height: 1.8;">
+                        <li>Wide-swath acquisition effectively captures complete regional deformation patterns.</li>
+                        <li>Seamless coverage eliminates data gaps and boundary artifacts in rupture analysis.</li>
+                        <li>Single-pass imaging improves efficiency in post-disaster deformation mapping.</li>
+                        <li>ALOS-2 ScanSAR is critical for comprehensive understanding of earthquake-induced crustal displacement.</li>
+                    </ul>
+                    
+                    <h4 style="margin-top: 18px; margin-bottom: 10px; font-weight: 600; color: var(--primary-color);">Ionosphere Correction for Accuracy:</h4>
+                    <ul style="margin-left: 20px; line-height: 1.8;">
+                        <li>Ionospheric correction is necessary to distinguish true deformation from atmospheric artifacts.</li>
+                        <li>Without correction, significant phase delays can produce false deformation signals.</li>
+                        <li>Corrected interferograms provide reliable basis for rupture characterization and hazard assessment.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Landslide Section -->
+    <section id="Landslide" class="section">
+        <div class="container">
+            <h2 class="section-title">Landslide</h2>
+            <div class="content-card" style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;align-items:flex-start;">
+                <div class="interferogram-item" data-image="images/land.jpg" data-label="Landslides triggered by 2015 Gorkha Earthquake (Roback et al.)" role="button" tabindex="0" style="flex:1 1 30%;max-width:400px;min-width:280px;cursor:pointer;box-sizing:border-box;">
+                    <img src="images/land.jpg" alt="Landslides triggered by 2015 Gorkha Earthquake (Roback et al.)" style="width:100%;height:auto;border:1px solid #e6e6e6;display:block;" />
+                    <div style="margin-top:8px;font-weight:600;font-size:14px;">Landslides triggered by 2015 Gorkha Earthquake (Roback et al.)</div>
+                </div>
+                <div class="interferogram-item" data-image="images/land2.jpg" data-label="Landslides overlaid on LOS deformation map" role="button" tabindex="0" style="flex:1 1 30%;max-width:400px;min-width:280px;cursor:pointer;box-sizing:border-box;">
+                    <img src="images/land2.jpg" alt="Landslides overlaid on LOS deformation map" style="width:100%;height:auto;border:1px solid #e6e6e6;display:block;" />
+                    <div style="margin-top:8px;font-weight:600;font-size:14px;">Landslides overlaid on LOS deformation map</div>
+                </div>
+                <div class="interferogram-item" data-image="images/ksn.jpg" data-label="Landslides overlaid on normalized channel steepness index (Ksn) density map" role="button" tabindex="0" style="flex:1 1 30%;max-width:400px;min-width:280px;cursor:pointer;box-sizing:border-box;">
+                    <img src="images/ksn.jpg" alt="Landslides overlaid on normalized channel steepness index (Ksn) density map" style="width:100%;height:auto;border:1px solid #e6e6e6;display:block;" />
+                    <div style="margin-top:8px;font-weight:600;font-size:14px;">Landslides overlaid on normalized channel steepness index (Ksn) density map</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Research Project</h4>
+                    <p>Co-Seismic Deformation of the 2015 Gorkha Earthquake</p>
+                    <p>Using Radar Remote Sensing</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Author</h4>
+                    <p>Rajesh Silwal</p>
+                    <p style="font-size:13px;margin-top:4px;">
+                        <a href="mailto:rajesh.silwal2@gmail.com" style="color:inherit;text-decoration:none;">rajesh.silwal2@gmail.com</a><br>
+                        <a href="mailto:rsilwal2@cougarnet.uh.edu" style="color:inherit;text-decoration:none;">rsilwal2@cougarnet.uh.edu</a>
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>Data & Methods</h4>
+                    <p>ALOS-2 ScanSAR Level 1.1</p>
+                    <p>InSAR Processing (ISCE2 and GMTSAR)</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>2025 Gorkha Earthquake Research.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Image Modal/Lightbox -->
+    <div id="imageModal" class="image-modal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-image" id="modalImage" src="" alt="">
+        <div class="modal-caption" id="modalCaption"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+    <script src="https://unpkg.com/togeojson@0.16.0/dist/togeojson.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script src="script.js"></script>
+</body>
+</html>
+
